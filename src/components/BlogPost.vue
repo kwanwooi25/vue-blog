@@ -35,7 +35,7 @@
       <vue-disqus
         shortname="kwanwoos-blog"
         :identifier="post.slug"
-        url="http://www.kwanwoojeong.me"
+        url="http://www.kwanwoo.me"
       />
     </div>
   </main>
