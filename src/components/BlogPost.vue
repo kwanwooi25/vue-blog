@@ -32,7 +32,11 @@
     </div>
     <div class="post__section">
       <h2 class="post__section__title">Comments</h2>
-      <vue-disqus shortname="kwanwoos-blog" :identifier="post.slug" url="'http://kwjeong.me/post/' + post.slug"></vue-disqus>
+      <vue-disqus
+        shortname="kwanwoos-blog"
+        :identifier="post.slug"
+        url="http://www.kwanwoojeong.me"
+      />
     </div>
   </main>
 </template>
