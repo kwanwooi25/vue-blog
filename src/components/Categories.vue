@@ -1,5 +1,6 @@
 <template>
   <main>
+    <h1>Category: {{category}}</h1>
     <post-preview v-bind:posts="posts"/>
     <paginator
       v-bind:onPageChange="onPageChange"
@@ -17,9 +18,10 @@ import PostPreview from './PostPreview';
 import Paginator from './Paginator';
 
 export default {
-  name: 'BlogHome',
+  name: 'Categories',
   data() {
     return {
+      category: '',
       count: 0,
       posts: [],
       page: 1,
@@ -33,10 +35,9 @@ export default {
   methods: {
     async getPosts() {
       const res = await butter.post.list({
-        page: this.page,
-        page_size: this.page_size,
+        category_slug: this.$route.params.slug
       });
-      
+      this.category = this.$route.params.slug;
       this.posts = res.data.data;
       this.count = res.data.meta.count;
     },
@@ -63,6 +64,11 @@ export default {
   created() {
     this.getPosts();
   },
+  watch: {
+    '$route.params.slug'(newSlug, oldSlug) {
+      this.getPosts();
+    }
+  }
 };
 </script>
 

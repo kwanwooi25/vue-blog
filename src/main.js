@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import moment from 'moment';
+import VueDisqus from 'vue-disqus';
 import App from './App';
 import router from './router';
 
@@ -15,4 +16,7 @@ new Vue({
   template: '<App/>',
 });
 
+Vue.use(VueDisqus);
+
+// filters
 Vue.filter('formatDate', (value => moment(value).format('YYYY년 MM월 DD일')));

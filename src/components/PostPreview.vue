@@ -3,7 +3,14 @@
     <li v-for="post in posts" :key="post.slug" class="post-preview">
       <img
         class="post-preview__image"
+        v-if="post.featured_image"
         :src="post.featured_image"
+        :alt="post.title"
+      />
+      <img
+        class="post-preview__image"
+        v-else
+        :src="logo"
         :alt="post.title"
       />
       <router-link
@@ -23,9 +30,16 @@
 </template>
 
 <script>
+import logo from '../assets/kw.png';
+
 export default {
   name: 'PostPreview',
   props: ['posts'],
+  data() {
+    return {
+      logo
+    };
+  },
 };
 </script>
 
